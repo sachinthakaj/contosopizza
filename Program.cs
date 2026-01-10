@@ -13,6 +13,9 @@ builder.Services.AddScoped<ContosoPizza.Services.PizzaService>();
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
+builder.Services.AddAntiforgery();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -40,8 +43,15 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+
+app.UseAntiforgery();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapRazorComponents<ContosoPizza.Components.App>()
+    .AddInteractiveServerRenderMode();
 
 app.Run();
