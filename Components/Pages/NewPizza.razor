@@ -1,0 +1,84 @@
+@page "/pizzas/new"
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject PizzaService PizzaService
+@inject NavigationManager Navigation
+
+<h1>Add Pizza</h1>
+
+@if (!string.IsNullOrWhiteSpace(_error))
+{
+    <div class="alert alert-danger" role="alert">@_error</div>
+}
+
+@if (!string.IsNullOrWhiteSpace(_success))
+{
+    <div class="alert alert-success" role="alert">@_success</div>
+}
+
+<EditForm Model="_model" OnValidSubmit="CreateAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <InputText id="name" class="form-control" @bind-Value="_model.Name" />
+        <ValidationMessage For="@(() => _model.Name)" />
+    </div>
+
+    <div class="form-check mb-3">
+        <InputCheckbox id="isGlutenFree" class="form-check-input" @bind-Value="_model.IsGlutenFree" />
+        <label class="form-check-label" for="isGlutenFree">Gluten free</label>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary" disabled="@_submitting">
+            @(_submitting ? "Saving…" : "Save")
+        </button>
+        <a class="btn btn-outline-secondary" href="/pizzas">Cancel</a>
+    </div>
+</EditForm>
+
+@code {
+    private sealed class NewPizzaModel
+    {
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(100, ErrorMessage = "Name must be 100 characters or fewer")]
+        public string? Name { get; set; }
+
+        public bool IsGlutenFree { get; set; }
+    }
+
+    private readonly NewPizzaModel _model = new();
+    private bool _submitting;
+    private string? _error;
+    private string? _success;
+
+    private async Task CreateAsync()
+    {
+        _error = null;
+        _success = null;
+        _submitting = true;
+
+        try
+        {
+            await PizzaService.AddAsync(new Pizza
+            {
+                Name = _model.Name?.Trim(),
+                IsGlutenFree = _model.IsGlutenFree
+            });
+
+            Navigation.NavigateTo("/pizzas");
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _submitting = false;
+        }
+    }
+}

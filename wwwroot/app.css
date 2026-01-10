@@ -1,0 +1,2 @@
+body { background: #f8f9fa; }
+.app-shell main { min-height: calc(100vh - 56px); }
