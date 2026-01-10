@@ -1,0 +1,32 @@
+## Build outputs
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio / VS Code
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+
+## Rider
+.idea/
+
+## OS files
+.DS_Store
+Thumbs.db
+
+## Logs
+*.log
+
+## Test results
+TestResults/
+
+## NuGet
+*.nupkg
+# Uncomment if you don't want to commit packages lock
+# packages.lock.json
+
+## Dotnet tool restore
+.dotnet/
