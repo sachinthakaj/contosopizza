@@ -1,0 +1,15 @@
+meta {
+  name: Get ALL Pizza
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:5189/pizza
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
