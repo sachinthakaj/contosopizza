@@ -1,0 +1,72 @@
+@page "/pizzas"
+
+@using ContosoPizza.Client.Services
+@using ContosoPizza.Models
+
+@inject PizzaApiClient PizzaApi
+@inject IJSRuntime JS
+
+<PageTitle>Pizzas</PageTitle>
+
+<h1>Pizzas</h1>
+
+@if (_loading)
+{
+    <p>Loading…</p>
+}
+else if (!string.IsNullOrWhiteSpace(_error))
+{
+    <div class="alert alert-danger" role="alert">@_error</div>
+}
+else if (_pizzas.Count == 0)
+{
+    <p class="text-muted">No pizzas yet.</p>
+    <a class="btn btn-primary" href="/pizzas/new">Add your first pizza</a>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th style="width: 80px;">Id</th>
+                    <th>Name</th>
+                    <th style="width: 140px;">Gluten Free</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pizza in _pizzas)
+                {
+                    <tr>
+                        <td>@pizza.Id</td>
+                        <td>@pizza.Name</td>
+                        <td>@(pizza.IsGlutenFree ? "Yes" : "No")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private bool _loading = true;
+    private string? _error;
+    private List<Pizza> _pizzas = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _pizzas = await PizzaApi.GetAllAsync();
+            await JS.InvokeVoidAsync("console.table", _pizzas);
+        }
+        catch (Exception ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+}
