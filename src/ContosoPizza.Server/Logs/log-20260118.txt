@@ -1,0 +1,41 @@
+[2026-01-18 13:37:15.605 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 13:37:15.777 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-18 13:37:15.826 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+[2026-01-18 13:37:15.836 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+[2026-01-18 13:37:15.838 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 13:37:16.029 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Pizzas" AS p)
+[2026-01-18 13:38:34.192 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 POST http://localhost:5036/api/register - application/json 76
+[2026-01-18 13:38:34.220 +05:30 WRN] Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware Failed to determine the https port for redirect.
+[2026-01-18 13:38:34.225 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
+[2026-01-18 13:38:34.251 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(ContosoPizza.DTOs.Users.UserCreateDto) on controller ContosoPizza.Controllers.AuthController (ContosoPizza.Server).
+[2026-01-18 13:38:34.283 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+[2026-01-18 13:38:34.307 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server) in 51.8827ms
+[2026-01-18 13:38:34.312 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
+[2026-01-18 13:38:34.314 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 POST http://localhost:5036/api/register - 400 null application/problem+json; charset=utf-8 124.8039ms
+[2026-01-18 13:39:13.312 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 POST http://localhost:5036/api/register - application/json 79
+[2026-01-18 13:39:13.316 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
+[2026-01-18 13:39:13.317 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(ContosoPizza.DTOs.Users.UserCreateDto) on controller ContosoPizza.Controllers.AuthController (ContosoPizza.Server).
+[2026-01-18 13:39:13.761 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (49ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("CreatedAt", "Email", "PasswordHash", "UserName")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+[2026-01-18 13:39:13.796 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing ObjectResult, writing value of type 'ContosoPizza.ApiResponse`1[[ContosoPizza.DTOs.Users.UserDto, ContosoPizza.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-01-18 13:39:13.800 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server) in 482.947ms
+[2026-01-18 13:39:13.801 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
+[2026-01-18 13:39:13.807 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 POST http://localhost:5036/api/register - 201 null application/json; charset=utf-8 494.566ms

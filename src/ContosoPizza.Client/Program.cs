@@ -10,10 +10,10 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 var apiBaseUrl = builder.Configuration["ApiBaseUrl"];
 if (string.IsNullOrWhiteSpace(apiBaseUrl))
 {
-	var frontendScheme = new Uri(builder.HostEnvironment.BaseAddress, UriKind.Absolute).Scheme;
-	apiBaseUrl = frontendScheme.Equals("https", StringComparison.OrdinalIgnoreCase)
-		? builder.Configuration["ApiBaseUrlHttps"]
-		: builder.Configuration["ApiBaseUrlHttp"];
+    var frontendScheme = new Uri(builder.HostEnvironment.BaseAddress, UriKind.Absolute).Scheme;
+    apiBaseUrl = frontendScheme.Equals("https", StringComparison.OrdinalIgnoreCase)
+        ? builder.Configuration["ApiBaseUrlHttps"]
+        : builder.Configuration["ApiBaseUrlHttp"];
 }
 
 apiBaseUrl ??= builder.HostEnvironment.BaseAddress;
