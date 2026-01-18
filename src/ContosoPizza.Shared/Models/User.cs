@@ -13,6 +13,9 @@ public class User
     [EmailAddress]
     public string Email { get; set; } = string.Empty;
 
+    [MaxLength(100)]
+    public string Role { get; set; } = "User";
+
     [MaxLength(255)]
     public string PasswordHash { get; set; } = string.Empty;
 

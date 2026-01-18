@@ -58,6 +58,7 @@ public sealed class UserService
             {
                 UserName = dto.UserName,
                 Email = dto.Email,
+                Role = dto.Role
             };
 
             user.PasswordHash = _passwordHasher.HashPassword(user, dto.Password);
