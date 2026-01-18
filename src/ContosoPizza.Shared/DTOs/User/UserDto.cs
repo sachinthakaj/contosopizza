@@ -7,6 +7,7 @@ public sealed class UserDto
     public int Id { get; init; }
     public string UserName { get; init; } = string.Empty;
     public string Email { get; init; } = string.Empty;
+    public string Role { get; init; } = string.Empty;
 
     public static UserDto From(User user) =>
         new()
@@ -14,5 +15,6 @@ public sealed class UserDto
             Id = user.Id,
             UserName = user.UserName,
             Email = user.Email,
+            Role = user.Role
         };
 }

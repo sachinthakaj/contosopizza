@@ -572,3 +572,163 @@ RETURNING "Id";
 [2026-01-18 16:19:57.061 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server) in 776.0273ms
 [2026-01-18 16:19:57.063 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
 [2026-01-18 16:19:57.072 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 POST http://localhost:5036/api/register - 201 null application/json; charset=utf-8 789.5643ms
+[2026-01-18 17:05:03.761 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 17:05:03.964 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-18 17:05:04.018 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+[2026-01-18 17:05:04.031 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+[2026-01-18 17:05:04.033 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 17:05:04.258 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Pizzas" AS p)
+[2026-01-18 17:14:38.220 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (30ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 17:14:38.388 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-18 17:14:38.436 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+[2026-01-18 17:14:38.449 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+[2026-01-18 17:14:38.451 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 17:14:38.643 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Pizzas" AS p)
+[2026-01-18 18:28:07.992 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 18:28:08.260 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-18 18:28:08.302 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+[2026-01-18 18:28:08.317 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+[2026-01-18 18:28:08.320 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 18:28:08.405 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "RefreshTokens" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Token" character varying(512) NOT NULL,
+    "UserId" integer NOT NULL,
+    "CreatedAt" timestamp with time zone NOT NULL,
+    "ExpiresAt" timestamp with time zone NOT NULL,
+    "IsUsed" boolean NOT NULL,
+    "UsedAt" timestamp with time zone,
+    "IsRevoked" boolean NOT NULL,
+    "RevokedAt" timestamp with time zone,
+    CONSTRAINT "PK_RefreshTokens" PRIMARY KEY ("Id")
+);
+[2026-01-18 18:28:08.412 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20260118125750_AddRefreshTokens', '10.0.1');
+[2026-01-18 18:35:39.105 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 18:35:39.270 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+[2026-01-18 18:35:39.320 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+[2026-01-18 18:35:39.330 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+[2026-01-18 18:35:39.332 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+[2026-01-18 18:35:39.511 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Pizzas" AS p)
+[2026-01-18 18:35:39.588 +05:30 INF] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager User profile is available. Using 'C:\Users\Sachinthaka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-01-18 18:35:58.545 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 POST http://localhost:5036/api/auth/register - application/json 102
+[2026-01-18 18:35:58.591 +05:30 WRN] Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware Failed to determine the https port for redirect.
+[2026-01-18 18:36:00.523 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
+[2026-01-18 18:36:00.562 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(ContosoPizza.DTOs.Users.UserCreateDto) on controller ContosoPizza.Controllers.AuthController (ContosoPizza.Server).
+[2026-01-18 18:36:00.994 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (32ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?', @p2='?', @p3='?', @p4='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("CreatedAt", "Email", "PasswordHash", "Role", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+[2026-01-18 18:36:01.027 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing ObjectResult, writing value of type 'ContosoPizza.ApiResponse`1[[ContosoPizza.DTOs.Users.UserDto, ContosoPizza.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-01-18 18:36:01.048 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server) in 482.379ms
+[2026-01-18 18:36:01.052 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.AuthController.Register (ContosoPizza.Server)'
+[2026-01-18 18:36:01.059 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 POST http://localhost:5036/api/auth/register - 201 null application/json; charset=utf-8 2517.3785ms
+[2026-01-18 18:37:54.240 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 POST http://localhost:5036/api/auth/login - application/json 50
+[2026-01-18 18:37:54.244 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'ContosoPizza.Controllers.AuthController.Login (ContosoPizza.Server)'
+[2026-01-18 18:37:54.257 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequestDto) on controller ContosoPizza.Controllers.AuthController (ContosoPizza.Server).
+[2026-01-18 18:37:54.468 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[@userName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."PasswordHash", u."Role", u."UserName"
+FROM "Users" AS u
+WHERE u."UserName" = @userName
+LIMIT 1
+[2026-01-18 18:37:54.697 +05:30 INF] ContosoPizza.Services.JwtService Access token generated for user Hector
+[2026-01-18 18:37:54.738 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RefreshTokens" ("CreatedAt", "ExpiresAt", "IsRevoked", "IsUsed", "RevokedAt", "Token", "UsedAt", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "Id";
+[2026-01-18 18:37:54.742 +05:30 INF] ContosoPizza.Services.AuthService User Hector authenticated successfully
+[2026-01-18 18:37:54.746 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ContosoPizza.DTOs.Users.UserDto, ContosoPizza.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-01-18 18:37:54.759 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.AuthController.Login (ContosoPizza.Server) in 501.2365ms
+[2026-01-18 18:37:54.759 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.AuthController.Login (ContosoPizza.Server)'
+[2026-01-18 18:37:54.760 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 POST http://localhost:5036/api/auth/login - 200 null application/json; charset=utf-8 519.3556ms
+[2026-01-18 18:41:22.143 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 GET http://localhost:5036/api/user - null null
+[2026-01-18 18:41:22.158 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'ContosoPizza.Controllers.UserController.GetAll (ContosoPizza.Server)'
+[2026-01-18 18:41:22.173 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ContosoPizza.Controllers.UserController (ContosoPizza.Server).
+[2026-01-18 18:41:22.361 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."PasswordHash", u."Role", u."UserName"
+FROM "Users" AS u
+ORDER BY u."Id"
+[2026-01-18 18:41:22.364 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing ObjectResult, writing value of type 'ContosoPizza.ApiResponse`1[[System.Collections.Generic.IReadOnlyList`1[[ContosoPizza.DTOs.Users.UserDto, ContosoPizza.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-01-18 18:41:22.372 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.UserController.GetAll (ContosoPizza.Server) in 199.1033ms
+[2026-01-18 18:41:22.372 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.UserController.GetAll (ContosoPizza.Server)'
+[2026-01-18 18:41:22.372 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 GET http://localhost:5036/api/user - 200 null application/json; charset=utf-8 230.4228ms
+[2026-01-18 18:42:01.550 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 POST http://localhost:5036/api/auth/login - application/json 50
+[2026-01-18 18:42:01.551 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'ContosoPizza.Controllers.AuthController.Login (ContosoPizza.Server)'
+[2026-01-18 18:42:01.552 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(LoginRequestDto) on controller ContosoPizza.Controllers.AuthController (ContosoPizza.Server).
+[2026-01-18 18:42:01.579 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (11ms) [Parameters=[@userName='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."CreatedAt", u."Email", u."PasswordHash", u."Role", u."UserName"
+FROM "Users" AS u
+WHERE u."UserName" = @userName
+LIMIT 1
+[2026-01-18 18:42:01.666 +05:30 INF] ContosoPizza.Services.JwtService Access token generated for user Hector
+[2026-01-18 18:42:01.674 +05:30 INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = DateTime), @p7='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "RefreshTokens" ("CreatedAt", "ExpiresAt", "IsRevoked", "IsUsed", "RevokedAt", "Token", "UsedAt", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7)
+RETURNING "Id";
+[2026-01-18 18:42:01.675 +05:30 INF] ContosoPizza.Services.AuthService User Hector authenticated successfully
+[2026-01-18 18:42:01.678 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[ContosoPizza.DTOs.Users.UserDto, ContosoPizza.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-01-18 18:42:01.678 +05:30 INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action ContosoPizza.Controllers.AuthController.Login (ContosoPizza.Server) in 125.8168ms
+[2026-01-18 18:42:01.679 +05:30 INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'ContosoPizza.Controllers.AuthController.Login (ContosoPizza.Server)'
+[2026-01-18 18:42:01.679 +05:30 INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/1.1 POST http://localhost:5036/api/auth/login - 200 null application/json; charset=utf-8 128.5181ms
