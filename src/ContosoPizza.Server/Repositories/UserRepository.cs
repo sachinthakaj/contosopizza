@@ -22,6 +22,14 @@ public class UserRepository
         return await _db.Users.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
     }
 
+    public Task<User?> GetByUserNameAsync(string userName)
+    {
+        if (string.IsNullOrWhiteSpace(userName))
+            return Task.FromResult<User?>(null);
+
+        return _db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.UserName == userName);
+    }
+
     public async Task AddAsync(User user)
     {
         _db.Users.Add(user);
@@ -36,6 +44,7 @@ public class UserRepository
 
         existing.UserName = user.UserName;
         existing.Email = user.Email;
+        existing.Role = user.Role;
         existing.PasswordHash = user.PasswordHash;
         await _db.SaveChangesAsync();
         return true;

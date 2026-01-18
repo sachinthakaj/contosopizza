@@ -1,20 +1,18 @@
 meta {
-  name: Create User
+  name: Login
   type: http
-  seq: 2
+  seq: 6
 }
 
 post {
-  url: http://localhost:5036/api/register
+  url: http://localhost:5036/api/auth/login
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "username": "Nacho1",
-    "email": "nacho1@contoso.com",
-    "role": "admin",
+    "username": "Hector",
     "password": "123456"
   }
 }
