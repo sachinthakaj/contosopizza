@@ -1,0 +1,24 @@
+meta {
+  name: UPDATE User
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5036/api/user/1
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "userName": "Jhane",
+    "email": "jhane@contoso.com",
+    "passwordHash": "AQAAAAIAAYagAAAAEExampleHashValueForDevOnly=="
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
