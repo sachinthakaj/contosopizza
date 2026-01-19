@@ -38,25 +38,25 @@ public sealed class RefreshTokenService : IRefreshTokenService
 
         if (existingToken == null || existingToken.UserId != userId)
         {
-            _logger.LogWarning("Invalid refresh token rotation attempt for user {UserId}", userId);
+            _logger.LogWarning($"Invalid refresh token rotation attempt for user {userId}");
             throw new SecurityTokenException("Invalid refresh token");
         }
 
         if (existingToken.IsRevoked)
         {
-            _logger.LogWarning("Refresh token revoked for user {UserId}", userId);
+            _logger.LogWarning($"Refresh token revoked for user {userId}");
             throw new SecurityTokenException("Invalid refresh token");
         }
 
         if (existingToken.ExpiresAt <= DateTimeOffset.UtcNow)
         {
-            _logger.LogWarning("Refresh token expired for user {UserId}", userId);
+            _logger.LogWarning($"Refresh token expired for user {userId}");
             throw new SecurityTokenException("Refresh token expired");
         }
 
         if (existingToken.IsUsed)
         {
-            _logger.LogWarning("Refresh token reuse detected for user {UserId}. Revoking all tokens.", userId);
+            _logger.LogWarning($"Refresh token reuse detected for user {userId}. Revoking all tokens.");
             await _repository.RevokeAllUserTokensAsync(userId);
             throw new SecurityTokenException("Token reuse detected. Please log in again.");
         }

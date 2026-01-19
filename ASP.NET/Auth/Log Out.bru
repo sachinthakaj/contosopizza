@@ -1,0 +1,20 @@
+meta {
+  name: Log Out
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:5036/api/auth/logout
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI5IiwidW5pcXVlX25hbWUiOiJLaW0iLCJlbWFpbCI6ImtpbUBjb250b3NvLmNvbSIsInJvbGUiOiJhZG1pbiIsIm5iZiI6MTc2ODgxMzU1NSwiZXhwIjoxNzY4ODE0NDU1LCJpYXQiOjE3Njg4MTM1NTUsImlzcyI6IkNvbnRvc29QaXp6YSIsImF1ZCI6IkNvbnRvc29QaXp6YS5DbGllbnQifQ.1UOk_Q9J8SQMFQS8k6H4IOtHwOI6A3801Sz0pCYbwc8
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

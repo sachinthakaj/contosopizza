@@ -1,5 +1,6 @@
 using ContosoPizza.Models;
 using ContosoPizza.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContosoPizza.Controllers;
@@ -16,6 +17,7 @@ public class PizzaController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<List<Pizza>>> GetAll() =>
         await _pizzaService.GetAllAsync();
 
