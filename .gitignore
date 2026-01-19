@@ -31,3 +31,7 @@ TestResults/
 
 ## Dotnet tool restore
 .dotnet/
+
+## Environment
+.env
+.env.*
