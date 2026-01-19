@@ -21,6 +21,10 @@ Thumbs.db
 *.log
 Logs/
 
+## Environment
+.env
+.env.*
+
 ## Test results
 TestResults/
 

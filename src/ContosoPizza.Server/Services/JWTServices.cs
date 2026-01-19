@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using ContosoPizza.Models;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -54,7 +53,7 @@ public class JwtService : IJwtService
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var tokenString = tokenHandler.WriteToken(token);
 
-        _logger.LogInformation("Access token generated for user {UserName}", user.UserName);
+        _logger.LogInformation($"Access token generated for user {user.UserName}");
 
         return tokenString;
     }
@@ -111,7 +110,7 @@ public class JwtService : IJwtService
 
             if (!isHmacSha256)
             {
-                _logger.LogWarning("Token validation failed: invalid algorithm {Alg}", alg);
+                _logger.LogWarning($"Token validation failed: invalid algorithm {alg}");
                 return null;
             }
 
@@ -119,7 +118,7 @@ public class JwtService : IJwtService
         }
         catch (Exception ex)
         {
-            _logger.LogWarning(ex, "Token validation failed");
+            _logger.LogWarning($"Token validation failed: {ex.Message}");
         }
 
         return null;

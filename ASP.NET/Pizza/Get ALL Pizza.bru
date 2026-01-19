@@ -7,7 +7,11 @@ meta {
 get {
   url: http://localhost:5036/api/pizza
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMiIsInVuaXF1ZV9uYW1lIjoiR29tZXkiLCJlbWFpbCI6ImdvbWV5QGNvbnRvc28uY29tIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzY4NzQ3MTc1LCJleHAiOjE3Njg3NDgwNzUsImlhdCI6MTc2ODc0NzE3NSwiaXNzIjoiQ29udG9zb1BpenphIiwiYXVkIjoiQ29udG9zb1BpenphLkNsaWVudCJ9.rXDXL7ZFgfUSCtcpl1RDsjMJ0DzVOSzP8kv468pJY_E
 }
 
 settings {

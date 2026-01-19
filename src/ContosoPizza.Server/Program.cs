@@ -1,14 +1,32 @@
 using ContosoPizza.Data;
 using ContosoPizza.Models;
 using ContosoPizza.Services;
+using ContosoPizza;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Text;
+using System.Text.Json;
+
+// Load .env into environment variables (local development convenience)
+// Order matters: env vars must exist before CreateBuilder builds configuration.
+var envPath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
+if (File.Exists(envPath))
+{
+    DotNetEnv.Env.Load(envPath);
+}
+else
+{
+    DotNetEnv.Env.TraversePath().Load();
+}
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Ensure environment variables are part of configuration (CreateBuilder does this by default,
+// but keeping this makes the intent explicit).
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Host.UseSerilog((context, services, loggerConfiguration) =>
     loggerConfiguration
@@ -73,6 +91,31 @@ builder.Services.AddAuthentication(options =>
                 var logger = loggerFactory?.CreateLogger("JwtBearer");
                 logger?.LogWarning(context.Exception, "JWT authentication failed");
                 return Task.CompletedTask;
+            },
+            OnChallenge = context =>
+            {
+                // Prevent the default behavior (which may return an empty 401)
+                context.HandleResponse();
+
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                context.Response.ContentType = "application/json";
+
+                var payload = ApiResponse<object?>.Fail(
+                    "Unauthorized",
+                    StatusCodes.Status401Unauthorized);
+
+                return context.Response.WriteAsync(JsonSerializer.Serialize(payload));
+            },
+            OnForbidden = context =>
+            {
+                context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                context.Response.ContentType = "application/json";
+
+                var payload = ApiResponse<object?>.Fail(
+                    "Forbidden",
+                    StatusCodes.Status403Forbidden);
+
+                return context.Response.WriteAsync(JsonSerializer.Serialize(payload));
             },
             OnTokenValidated = context =>
             {
