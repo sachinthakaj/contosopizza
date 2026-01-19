@@ -54,21 +54,21 @@ public sealed class AuthService : IAuthService
         var user = await _userRepository.GetByUserNameAsync(userName);
         if (user is null)
         {
-            _logger.LogWarning("Authentication failed: user not found for username {UserName}", userName);
+            _logger.LogWarning($"Authentication failed: invalid password for username {userName}");
             return null;
         }
 
         var verifyResult = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
         if (verifyResult == PasswordVerificationResult.Failed)
         {
-            _logger.LogWarning("Authentication failed: invalid password for username {UserName}", userName);
+            _logger.LogWarning($"Authentication failed: invalid password for username {userName}");
             return null;
         }
 
         var accessToken = _jwtService.GenerateAccessToken(user);
         var refreshToken = await _refreshTokenService.CreateRefreshTokenAsync(user.Id);
 
-        _logger.LogInformation("User {UserName} authenticated successfully", user.UserName);
+        _logger.LogInformation($"User {user.UserName} authenticated successfully");
 
         var userDto = UserDto.From(user);
 
@@ -106,7 +106,7 @@ public sealed class AuthService : IAuthService
         }
         catch (SecurityTokenException ex)
         {
-            _logger.LogWarning(ex, "Refresh token rotation failed for user {UserId}", user.Id);
+            _logger.LogWarning($"Refresh token rotation failed for user {user.Id}: {ex.Message}");
             return null;
         }
 

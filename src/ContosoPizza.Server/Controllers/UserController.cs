@@ -1,6 +1,7 @@
 using ContosoPizza.DTOs.Users;
 using ContosoPizza.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContosoPizza.Controllers;
 
@@ -18,6 +19,7 @@ public sealed class UserController : ControllerBase
 	[HttpGet]
 	[ProducesResponseType(typeof(ApiResponse<IReadOnlyList<UserDto>>), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ApiResponse<IReadOnlyList<UserDto>>), StatusCodes.Status500InternalServerError)]
+    [Authorize]
 	public async Task<IActionResult> GetAll()
 	{
 		var response = await _userService.GetAllAsync();

@@ -46,7 +46,6 @@ public sealed class AuthController : ControllerBase
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
-            Secure = Request.IsHttps,
             SameSite = SameSiteMode.Strict,
             Expires = DateTimeOffset.UtcNow.AddDays(7)
         };
@@ -75,7 +74,6 @@ public sealed class AuthController : ControllerBase
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
-            Secure = Request.IsHttps,
             SameSite = SameSiteMode.Strict,
             Expires = DateTimeOffset.UtcNow.AddDays(7)
         };
@@ -102,7 +100,7 @@ public sealed class AuthController : ControllerBase
 
         Response.Cookies.Delete("refreshToken");
 
-        _logger.LogInformation("User {User} logged out", User.Identity?.Name);
+        _logger.LogInformation($"User logged out successfully");
 
         return Ok(new { message = "Logged out successfully" });
     }
