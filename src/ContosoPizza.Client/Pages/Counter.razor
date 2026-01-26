@@ -1,18 +1,77 @@
 ﻿@page "/counter"
+@using ContosoPizza.Client.Components
 
 <PageTitle>Counter</PageTitle>
 
 <h1>Counter</h1>
 
-<p role="status">Current count: @currentCount</p>
+<p role="status">Current count:-- @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="() => currentCount += 2">Click me</button>
+
+@if (currentCount >= 3)
+{
+    <p>You Win</p>
+}
+
+@for (int i = 1; i <= currentCount; i++)
+{
+    <li>Clicked</li>
+}
+
+<div class="mt-3">
+    <input @bind="text" @bind:event="onchange" @bind:after="Search"/>
+    <button @onclick="Clear">Clear</button>
+    <p>@text</p>
+    <p>@searchText</p>
+</div>
+
+<div class="mt-3" style="background-color:lightblue" @onmouseover="MouseOver" @onmouseout="MouseOut">
+    <p>@divText</p>
+</div>
+
+<MyButton OnClick="IncrementCount" class="btn btn-success">My Button</MyButton>
 
 @code {
     private int currentCount = 0;
 
+    string text = "";
+    string divText = "";
+
+    string searchText = "";
+
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+
     private void IncrementCount()
     {
-        currentCount++;
+        currentCount += IncrementAmount;
+    }
+
+    private void Onchange(ChangeEventArgs e)
+    {
+        text = (string)e.Value!;
+    }
+
+    private void MouseOver(MouseEventArgs e) => divText = "Mouse Over";
+
+    private void MouseOut(MouseEventArgs e) => divText = "Mouse Out";
+    private void Clear(MouseEventArgs args)
+    {
+        text = "";
+        searchText = "";
+    }
+
+    async Task Search()
+    {
+        searchText = "searching....";
+        await Task.Delay(3000);
+        searchText = "results";
+
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine(OperatingSystem.IsBrowser());
     }
 }
